@@ -35,8 +35,6 @@ const Emoji = styled.span`
 
 const Home = () => (
   <>
-    <Cover />
-
     <Container>
       <Description as="p">
         <strong>Welcome to the TicketSwap challenger.</strong> The goal of this
@@ -123,8 +121,6 @@ const Home = () => (
       <SubTitle>Popular events</SubTitle>
       <PopularEvents />
     </Container>
-
-    <Footer />
   </>
 )
 

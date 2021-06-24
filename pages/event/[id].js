@@ -21,9 +21,7 @@ const Event = ({ data }) => {
     const { name, date, location, imageUrl, description } = data.event
 
     return (
-      <>
-        <Cover />
-  
+      <>  
         <Container>
           <Image src={imageUrl} size={128} />
           <H2>{name}</H2>
@@ -31,8 +29,6 @@ const Event = ({ data }) => {
           <H5>{location}</H5>
           <Text>{description}</Text>
         </Container>
-  
-        <Footer />
       </>
     )
   }
