@@ -16,13 +16,12 @@ const BackgroundImage = styled.div`
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
       url(${props => props.imageUrl}) no-repeat center center;
     background-size: cover;
-    box-shadow: inset 0 -10rem 10rem -10rem ${color.spaceMediumAlpha};
   }
 `
 
 const Blur = styled.div`
-  backdrop-filter: blur(15px);
   @media ${device.tablet} {
+    backdrop-filter: blur(15px);
     padding: ${space[16]};
   }
 `
@@ -44,7 +43,7 @@ const EventContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-gap: 2rem;
+  grid-gap: ${space[32]};
   margin: 0 auto;
   @media ${device.tablet} {
     margin: ${space[64]} auto;
@@ -54,8 +53,8 @@ const EventContainer = styled.div`
 
 const InformationContainer = styled.div`
   margin-top: ${space[16]};
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: ${space[32]};
+  padding-right: ${space[32]};
   @media ${device.tablet} {
     padding-left: 0;
     padding-right: 0;
@@ -71,8 +70,7 @@ const StyledDescription = styled.p`
 
 const ImageContainer = styled.div`
   @media ${device.tablet} {
-    width: 250px;
-    height: inherit;
+    width: 254px;
   }
 `
 

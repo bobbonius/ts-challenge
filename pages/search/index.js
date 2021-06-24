@@ -11,7 +11,7 @@ import { useHelpers } from '../../hooks/useHelpers'
 const SearchContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  grid-gap: ${space[16]};
   padding: ${space[16]};
   margin: ${space[16]} auto;
   max-width: ${sizes.tablet}px;
