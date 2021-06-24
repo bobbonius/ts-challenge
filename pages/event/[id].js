@@ -17,23 +17,25 @@ const Event = ({ data }) => {
       </Container>
     )
 
-  const { name, date, location, imageUrl, description } = data.event
+  if (data) {
+    const { name, date, location, imageUrl, description } = data.event
 
-  return (
-    <>
-      <Cover />
-
-      <Container>
-        <Image src={imageUrl} size={128} />
-        <H2>{name}</H2>
-        <H5>{new Date(date).toLocaleString()}</H5>
-        <H5>{location}</H5>
-        <Text>{description}</Text>
-      </Container>
-
-      <Footer />
-    </>
-  )
+    return (
+      <>
+        <Cover />
+  
+        <Container>
+          <Image src={imageUrl} size={128} />
+          <H2>{name}</H2>
+          <H5>{new Date(date).toLocaleString()}</H5>
+          <H5>{location}</H5>
+          <Text>{description}</Text>
+        </Container>
+  
+        <Footer />
+      </>
+    )
+  }
 }
 
 export const getServerSideProps = async ({ params }) => {
