@@ -31,7 +31,7 @@ const PopularEvents = () => {
   return (
     <Wrapper>
       {popularEvents.map(({ id, name, location, date, imageUrl }) => (
-        <Link href={`/event/${id}`} passHref>
+        <Link href={`/event/${id}`} passHref key={id}>
           <a>
             <Card
               title={name}
