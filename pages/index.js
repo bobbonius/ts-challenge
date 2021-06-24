@@ -1,14 +1,19 @@
 import React from 'react'
 import Container from '~/components/Container'
-import Cover from '~/components/Cover'
-import Footer from '~/components/Footer'
-import { Collapsible, color, fontSize, Text, space } from '@ticketswap/solar'
+import {
+  Collapsible,
+  color,
+  fontSize,
+  Text,
+  space,
+  Button,
+} from '@ticketswap/solar'
+import { MagnifyingGlass } from '@ticketswap/comets'
 import styled from '@emotion/styled'
 import PopularEvents from '~/components/PopularEvents'
 
 const StyledCollapsible = styled(Collapsible)`
   color: ${color.space};
-
   & + & {
     margin-top: ${space[8]};
   }
@@ -33,10 +38,14 @@ const Emoji = styled.span`
   font-family: initial;
 `
 
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const Home = () => (
   <>
-    <Cover />
-
     <Container>
       <Description as="p">
         <strong>Welcome to the TicketSwap challenger.</strong> The goal of this
@@ -120,11 +129,20 @@ const Home = () => (
         </List>
       </StyledCollapsible>
 
-      <SubTitle>Popular events</SubTitle>
+      <SearchContainer>
+        <SubTitle>Popular events</SubTitle>
+        <Button
+          as="a"
+          size="small"
+          href="/search"
+          leftAdornment={<MagnifyingGlass size={20} />}
+        >
+          Go to search
+        </Button>
+      </SearchContainer>
+
       <PopularEvents />
     </Container>
-
-    <Footer />
   </>
 )
 
