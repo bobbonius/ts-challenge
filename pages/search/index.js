@@ -1,5 +1,5 @@
   
-import React, { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { useQuery } from '@apollo/client'
 import Link from 'next/link'
 import { Input, Card, Text, space, sizes } from '@ticketswap/solar'
@@ -46,7 +46,7 @@ export default function Search() {
               const { name, id, location, date } = event
 
               return (
-                <React.Fragment key={id}>
+                <Fragment key={id}>
                   <Link href={`/event/${id}`} passHref>
                     <a>
                       <Card
@@ -57,7 +57,7 @@ export default function Search() {
                       />
                     </a>
                   </Link>
-                </React.Fragment>
+                </Fragment>
               )
             })}
         </SearchContainer>
