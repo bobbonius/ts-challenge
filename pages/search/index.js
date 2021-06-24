@@ -1,9 +1,12 @@
-import { useState } from 'react'
+  
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/client'
-import styled from '@emotion/styled'
-import { Input, space, sizes } from '@ticketswap/solar'
+import Link from 'next/link'
+import { Input, Card, Text, space, sizes } from '@ticketswap/solar'
 import { MagnifyingGlass } from '@ticketswap/comets'
+import styled from '@emotion/styled'
 import getSearchResults from '~/graphql/queries/getSearchResults'
+import { useHelpers } from '../../hooks/useHelpers'
 
 const SearchContainer = styled.div`
   display: grid;
@@ -16,19 +19,20 @@ const SearchContainer = styled.div`
 
 export default function Search() {
   const [query, setQuery] = useState('')
-
   const { loading, data } = useQuery(getSearchResults, {
     variables: {
       query: query,
     },
   })
 
-  console.log(data)
+  const { truncateString } = useHelpers()
+
+  const hasResults = query && !loading && data
 
   return (
     <>
-      <SearchContainer>
-      <Input
+        <SearchContainer>
+          <Input
             placeholder="Search for events"
             id="search"
             label="Search"
@@ -37,7 +41,26 @@ export default function Search() {
             onChange={e => setQuery(e.target.value)}
             loading={loading}
           />
-      </SearchContainer>
+          {!hasResults && <Text>Results are shown here</Text>}
+          {hasResults && data.searchResults.map(event => {
+              const { name, id, location, date } = event
+
+              return (
+                <React.Fragment key={id}>
+                  <Link href={`/event/${id}`} passHref>
+                    <a>
+                      <Card
+                        title={truncateString(name, 40)}
+                        text={`${location} - ${new Date(
+                          date
+                        ).toLocaleDateString()}`}
+                      />
+                    </a>
+                  </Link>
+                </React.Fragment>
+              )
+            })}
+        </SearchContainer>
     </>
   )
 }
