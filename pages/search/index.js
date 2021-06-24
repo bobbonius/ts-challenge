@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from '@emotion/styled'
 import { Input, space, sizes } from '@ticketswap/solar'
 import { MagnifyingGlass } from '@ticketswap/comets'
@@ -12,6 +13,8 @@ const SearchContainer = styled.div`
 `
 
 export default function Search() {
+  const [query, setQuery] = useState('')
+
   return (
     <>
       <SearchContainer>
@@ -21,6 +24,7 @@ export default function Search() {
             label="Search"
             hideLabel
             leftAdornment={<MagnifyingGlass size={24} />}
+            onChange={e => setQuery(e.target.value)}
           />
       </SearchContainer>
     </>
