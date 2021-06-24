@@ -50,7 +50,7 @@ export default function Search() {
                   <Link href={`/event/${id}`} passHref>
                     <a>
                       <Card
-                        title={truncateString(name, 40)}
+                        title={truncateString(name, 35)}
                         text={`${location} - ${new Date(
                           date
                         ).toLocaleDateString()}`}
