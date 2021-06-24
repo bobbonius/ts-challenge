@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { Card, space, Spinner } from '@ticketswap/solar'
+import { Card, space, Spinner, device } from '@ticketswap/solar'
 import styled from '@emotion/styled'
 import getPopularEvents from '~/graphql/queries/getPopularEvents'
 import Link from 'next/link'
@@ -8,7 +8,10 @@ import Link from 'next/link'
 const Wrapper = styled.div`
   display: grid;
   grid-gap: ${space[16]};
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const PopularEvents = () => {

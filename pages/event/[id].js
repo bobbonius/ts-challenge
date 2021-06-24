@@ -1,11 +1,9 @@
 import React from 'react'
-import Container from '~/components/Container'
-import Cover from '~/components/Cover'
-import Footer from '~/components/Footer'
-import { Error } from '~/components/Error'
-import { H2, H5, Image, Text } from '@ticketswap/solar'
-import { initializeApollo } from '~/graphql/client'
 import getEvent from '~/graphql/queries/getEvent'
+import { initializeApollo } from '~/graphql/client'
+import { Error } from '~/components/Error'
+import { EventCover } from '~/components/EventCover'
+import Container from '~/components/Container'
 
 const Event = ({ data }) => {
   if (!data.event)
@@ -21,14 +19,16 @@ const Event = ({ data }) => {
     const { name, date, location, imageUrl, description } = data.event
 
     return (
-      <>  
-        <Container>
-          <Image src={imageUrl} size={128} />
-          <H2>{name}</H2>
-          <H5>{new Date(date).toLocaleString()}</H5>
-          <H5>{location}</H5>
-          <Text>{description}</Text>
-        </Container>
+      <>
+        <main>
+          <EventCover
+            imageUrl={imageUrl}
+            name={name}
+            location={location}
+            description={description}
+            date={date}
+          />
+        </main>
       </>
     )
   }
