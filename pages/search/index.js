@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useQuery } from '@apollo/client'
 import styled from '@emotion/styled'
 import { Input, space, sizes } from '@ticketswap/solar'
 import { MagnifyingGlass } from '@ticketswap/comets'
+import getSearchResults from '~/graphql/queries/getSearchResults'
 
 const SearchContainer = styled.div`
   display: grid;
@@ -15,6 +17,14 @@ const SearchContainer = styled.div`
 export default function Search() {
   const [query, setQuery] = useState('')
 
+  const { loading, data } = useQuery(getSearchResults, {
+    variables: {
+      query: query,
+    },
+  })
+
+  console.log(data)
+
   return (
     <>
       <SearchContainer>
@@ -25,6 +35,7 @@ export default function Search() {
             hideLabel
             leftAdornment={<MagnifyingGlass size={24} />}
             onChange={e => setQuery(e.target.value)}
+            loading={loading}
           />
       </SearchContainer>
     </>

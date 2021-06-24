@@ -11,6 +11,15 @@ export const resolvers = {
       const { id } = args
 
       return events.find(event => event.id === id) || null
-    }
+    },
+    searchResults(_parent, args, _context, _info) {
+      const { query } = args
+
+      if (query === "") return
+
+      return events.filter(event =>
+        event.name.toLowerCase().includes(query.toLowerCase())
+      )
+    },
   },
 }
