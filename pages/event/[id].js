@@ -2,12 +2,20 @@ import React from 'react'
 import Container from '~/components/Container'
 import Cover from '~/components/Cover'
 import Footer from '~/components/Footer'
+import { Error } from '~/components/Error'
 import { H2, H5, Image, Text } from '@ticketswap/solar'
 import { initializeApollo } from '~/graphql/client'
 import getEvent from '~/graphql/queries/getEvent'
 
 const Event = ({ data }) => {
-
+  if (!data.event)
+    return (
+      <Container>
+        <Error>
+          Something went wrong, please take me <a href="/">back</a>
+        </Error>
+      </Container>
+    )
 
   const { name, date, location, imageUrl, description } = data.event
 
