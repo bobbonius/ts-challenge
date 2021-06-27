@@ -1,12 +1,12 @@
 import { useState, Fragment } from 'react'
 import { useQuery } from '@apollo/client'
 import Link from 'next/link'
-import { Input, Card, Text, space, sizes, color } from '@ticketswap/solar'
-import { MagnifyingGlass, Sad } from '@ticketswap/comets'
+import { Input, Card, space, sizes, color } from '@ticketswap/solar'
+import { MagnifyingGlass } from '@ticketswap/comets'
 import styled from '@emotion/styled'
 import getSearchResults from '~/graphql/queries/getSearchResults'
-import { useHelpers } from '../../hooks/useHelpers'
-import { Placeholder } from '../../components/Placeholder'
+import { useHelpers } from '~/hooks/useHelpers'
+import { Placeholder } from '~/components/Placeholder'
 
 const SearchContainer = styled.div`
   display: grid;
