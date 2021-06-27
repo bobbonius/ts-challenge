@@ -5,6 +5,11 @@ import Cover from '~/components/Cover'
 import Footer from '~/components/Footer'
 import { useApollo } from '~/graphql/client'
 import BaseStyles from '~/styles/global'
+import styled from '@emotion/styled'
+
+const Container = styled.div`
+  min-height: 100vh;
+`
 
 export default function App({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps.initialApolloState)
@@ -19,7 +24,9 @@ export default function App({ Component, pageProps }) {
       <BaseStyles />
 
       <Cover />
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       <Footer />
     </ApolloProvider>
   )
