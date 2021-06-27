@@ -15,7 +15,7 @@ export const resolvers = {
     searchResults(_parent, args, _context, _info) {
       const { query } = args
 
-      if (query === "") return
+      if (query === "") return new Array()
 
       return events.filter(event =>
         event.name.toLowerCase().includes(query.toLowerCase())
